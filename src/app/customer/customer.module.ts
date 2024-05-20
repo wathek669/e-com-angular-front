@@ -4,6 +4,9 @@ import { CommonModule } from '@angular/common';
 import { CustomerRoutingModule } from './customer-routing.module';
 import { CustomerComponent } from './customer.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
+import { HttpClientModule } from '@angular/common/http';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { DemoAngularMaterailModule } from '../DemoAngularMaterialModule';
 
 
 @NgModule({
@@ -13,7 +16,11 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
   ],
   imports: [
     CommonModule,
-    CustomerRoutingModule
+    CustomerRoutingModule,
+    HttpClientModule,
+    FormsModule,
+    ReactiveFormsModule,
+    DemoAngularMaterailModule,
   ]
 })
 export class CustomerModule { }

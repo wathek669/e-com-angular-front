@@ -28,7 +28,7 @@ export class AdminService {
       headers: this.createAuthorizationHeader(),
     });
   }
-  getAllProductsByName(name :any): Observable<any> {
+  getAllProductsByName(name: any): Observable<any> {
     return this.http.get(BASIC_URL + `api/admin/search/${name}`, {
       headers: this.createAuthorizationHeader(),
     });
@@ -36,6 +36,16 @@ export class AdminService {
 
   addProduct(product: any): Observable<any> {
     return this.http.post(BASIC_URL + 'api/admin/product', product, {
+      headers: this.createAuthorizationHeader(),
+    });
+  }
+  addCoupon(couponDto: any): Observable<any> {
+    return this.http.post(BASIC_URL + 'api/admin/coupons', couponDto, {
+      headers: this.createAuthorizationHeader(),
+    });
+  }
+  getCoupons(): Observable<any> {
+    return this.http.get(BASIC_URL + 'api/admin/coupons' , {
       headers: this.createAuthorizationHeader(),
     });
   }

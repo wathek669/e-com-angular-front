@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { CustomerService } from '../../services/customer.service';
+import { UserStorageService } from 'src/app/services/storage/user-storage.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -9,7 +10,6 @@ import { CustomerService } from '../../services/customer.service';
   styleUrls: ['./dashboard.component.scss'],
 })
 export class DashboardComponent implements OnInit {
-
   products: any[] = [];
   searchProductForm: FormGroup;
   constructor(
@@ -24,10 +24,12 @@ export class DashboardComponent implements OnInit {
     });
   }
 
-  addToCart(arg0: any) {
-    throw new Error('Method not implemented.');
-    }
-    
+  addToCart(id: any) {
+    this.customerService.addToCart(id).subscribe((res) => {
+      this.snackBar.open('Added to cart', 'Close', { duration: 2000 });
+    });
+  }
+
   getAllProducts() {
     this.customerService.getAllProducts().subscribe((res) => {
       res.forEach((e) => {
